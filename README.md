@@ -2,7 +2,7 @@
 
 YouTubeチャンネルの**異常値（バズ動画）をリサーチ・モデリングし、バズの方程式を言語化する** [Claude Code](https://claude.com/claude-code) スキルです。
 
-「企画を出す」のではなく「**企画を出すための材料を揃える**」前段スキル。出力した `04_research_summary.yaml` を、台本スキル **[clbs-video-script-pro](https://github.com/conlab-clbs/clbs-video-script-pro)** や `clbs-sns` に渡すと、企画立案の精度が上がります。
+「企画を出す」のではなく「**企画を出すための材料を揃える**」前段スキル。出力した `04_research_summary.yaml` を、台本スキル **[clbs-youtube-script-pro](https://github.com/conlab-clbs/clbs-youtube-script-pro)** や `clbs-sns` に渡すと、企画立案の精度が上がります。
 
 ---
 
@@ -38,7 +38,7 @@ Claude Code でこのスキルを入れた状態で「YouTubeリサーチして�
 ```
 clbs-youtube-research（リサーチ）
    ↓ 04_research_summary.yaml
-clbs-video-script-pro（企画考案＋台本）or clbs-sns（多媒体展開）
+clbs-youtube-script-pro（企画考案＋台本）or clbs-sns（多媒体展開）
    ↓
 clbs-youtube-edit（編集）→ 完成動画
 ```
@@ -49,5 +49,5 @@ clbs-youtube-edit（編集）→ 完成動画
 
 ## 関連
 
-- 企画考案＋台本（後段）: [clbs-video-script-pro](https://github.com/conlab-clbs/clbs-video-script-pro)
+- 企画考案＋台本（後段）: [clbs-youtube-script-pro](https://github.com/conlab-clbs/clbs-youtube-script-pro)
 - 編集（最終段）: [clbs-youtube-edit](https://github.com/conlab-clbs/clbs-youtube-edit)

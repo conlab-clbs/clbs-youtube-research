@@ -1,10 +1,10 @@
 ---
 name: clbs-youtube-research
-description: YouTube チャンネルの異常値（バズ動画）をリサーチ・モデリングし、企画立案のための材料を整理する汎用スキル。「YouTubeリサーチ」「チャンネル分析」「競合リサーチ」「異常値を見つけて」「バズ動画モデリング」「チャンネルの現状を分析して」「企画の材料を集めて」「YouTube戦略を立てたい」などのキーワードで必ず使用すること。`clbs-video-script-pro`（顔出し動画の企画考案〜台本）や `clbs-sns`（11_sns）の企画立案フェーズの精度を引き上げる前段スキル。リサーチ単体でも、後段の台本スキルに `04_research_summary.yaml` を渡しても使える。
+description: YouTube チャンネルの異常値（バズ動画）をリサーチ・モデリングし、企画立案のための材料を整理する汎用スキル。「YouTubeリサーチ」「チャンネル分析」「競合リサーチ」「異常値を見つけて」「バズ動画モデリング」「チャンネルの現状を分析して」「企画の材料を集めて」「YouTube戦略を立てたい」などのキーワードで必ず使用すること。`clbs-youtube-script-pro`（顔出し動画の企画考案〜台本）や `clbs-sns`（11_sns）の企画立案フェーズの精度を引き上げる前段スキル。リサーチ単体でも、後段の台本スキルに `04_research_summary.yaml` を渡しても使える。
 ---
 
 # clbs-youtube-research — YouTube リサーチ＆異常値モデリング
-# v1.0 — 企画立案の前段（clbs-video-script-pro / clbs-sns へ引き渡し）
+# v1.0 — 企画立案の前段（clbs-youtube-script-pro / clbs-sns へ引き渡し）
 
 ## 準拠規約
 
@@ -28,7 +28,7 @@ description: YouTube チャンネルの異常値（バズ動画）をリサー�
 - `04_research_summary.yaml` — 後続スキルへの統合サマリ
 
 ### 次のスキル
-- `clbs-video-script-pro`（顔出し動画の企画考案〜台本）
+- `clbs-youtube-script-pro`（顔出し動画の企画考案〜台本）
   - `04_research_summary.yaml` を読み込んでからフェーズ3「精鋭3案」を出す
 - `clbs-sns`（11_sns）の STEP2 フェーズ1：企画立案
   - `04_research_summary.yaml` を読み込んでから企画10案を出す
@@ -405,14 +405,14 @@ strategy_recommendation:
   new_formats_to_test: []   # 新規実験すべきフォーマット
   cta_strength_recommendation: ""  # 強CTA / 弱CTA / 混在
 
-# 後段スキルへの引き渡しメッセージ（clbs-video-script-pro / clbs-sns 共通）
+# 後段スキルへの引き渡しメッセージ（clbs-youtube-script-pro / clbs-sns 共通）
 handoff_to_script_skill: |
   上記のリサーチ結果を前提に企画を考案してください。gap_opportunities
   （競合がまだやっていない切り口）を最優先で企画化すること。
   - 継承テンプレに基づくバズ狙い企画
   - gap を突いた新規フォーマット実験
   - 検索資産型企画
-  clbs-video-script-pro なら「精鋭3案＋企画審査5項目セルフ採点」、
+  clbs-youtube-script-pro なら「精鋭3案＋企画審査5項目セルフ採点」、
   clbs-sns なら「企画10案＋企画審査チェックリスト5項目」を適用する。
 ```
 
@@ -444,7 +444,7 @@ handoff_to_script_skill: |
 □ strategy_recommendation に明確な戦略タイプが入っている
 □ 後段スキルに渡すための handoff_to_script_skill メッセージが書かれている
 
-→ すべてチェック後、ユーザーに「clbs-video-script-pro / clbs-sns に進みますか？」と確認する
+→ すべてチェック後、ユーザーに「clbs-youtube-script-pro / clbs-sns に進みますか？」と確認する
 ```
 
 ---
