@@ -1,10 +1,10 @@
 ---
-name: clbs-yt-research
+name: clbs-youtube-research
 description: YouTube チャンネルの異常値（バズ動画）をリサーチ・モデリングし、企画立案のための材料を整理する汎用スキル。「YouTubeリサーチ」「チャンネル分析」「競合リサーチ」「異常値を見つけて」「バズ動画モデリング」「チャンネルの現状を分析して」「企画の材料を集めて」「YouTube戦略を立てたい」などのキーワードで必ず使用すること。`clbs-video-script-pro`（顔出し動画の企画考案〜台本）や `clbs-sns`（11_sns）の企画立案フェーズの精度を引き上げる前段スキル。リサーチ単体でも、後段の台本スキルに `04_research_summary.yaml` を渡しても使える。
 ---
 
-# SKILL: 12_yt_research.md — YouTube リサーチ＆異常値モデリング
-# v1.0 — clbs-sns（11_sns）への前段として独立化
+# clbs-youtube-research — YouTube リサーチ＆異常値モデリング
+# v1.0 — 企画立案の前段（clbs-video-script-pro / clbs-sns へ引き渡し）
 
 ## 準拠規約
 
@@ -359,7 +359,7 @@ competitor:
 ```yaml
 # ============================================================
 # 04_research_summary.yaml
-# clbs-yt-research v1.0 出力
+# clbs-youtube-research v1.0 出力
 # ============================================================
 
 research_meta:
@@ -421,7 +421,7 @@ handoff_to_script_skill: |
 ## 完了チェックリスト
 
 ```
-【clbs-yt-research 完了チェック】
+【clbs-youtube-research 完了チェック】
 
 ■ 出力ファイル
 □ 01_channel_diagnosis.md

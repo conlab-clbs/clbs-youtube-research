@@ -1,4 +1,4 @@
-# clbs-yt-research
+# clbs-youtube-research
 
 YouTubeチャンネルの**異常値（バズ動画）をリサーチ・モデリングし、バズの方程式を言語化する** [Claude Code](https://claude.com/claude-code) スキルです。
 
@@ -36,7 +36,7 @@ Claude Code でこのスキルを入れた状態で「YouTubeリサーチして�
 ## パイプライン上の位置づけ
 
 ```
-clbs-yt-research（リサーチ）
+clbs-youtube-research（リサーチ）
    ↓ 04_research_summary.yaml
 clbs-video-script-pro（企画考案＋台本）or clbs-sns（多媒体展開）
    ↓
