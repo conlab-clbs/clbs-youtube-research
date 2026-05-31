@@ -405,13 +405,15 @@ strategy_recommendation:
   new_formats_to_test: []   # 新規実験すべきフォーマット
   cta_strength_recommendation: ""  # 強CTA / 弱CTA / 混在
 
-# clbs-sns への引き渡しメッセージ
-handoff_to_clbs_sns: |
-  上記のリサーチ結果を前提に、企画10案を出してください。
-  - 継承テンプレに基づくバズ狙い企画を X 本
-  - 新規フォーマット実験を X 本
-  - 検索資産型企画を X 本
-  各案には clbs-sns の企画審査チェックリスト5項目を必ず適用すること。
+# 後段スキルへの引き渡しメッセージ（clbs-video-script-pro / clbs-sns 共通）
+handoff_to_script_skill: |
+  上記のリサーチ結果を前提に企画を考案してください。gap_opportunities
+  （競合がまだやっていない切り口）を最優先で企画化すること。
+  - 継承テンプレに基づくバズ狙い企画
+  - gap を突いた新規フォーマット実験
+  - 検索資産型企画
+  clbs-video-script-pro なら「精鋭3案＋企画審査5項目セルフ採点」、
+  clbs-sns なら「企画10案＋企画審査チェックリスト5項目」を適用する。
 ```
 
 ---
