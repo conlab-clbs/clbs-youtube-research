@@ -1,0 +1,7 @@
+# OS
+.DS_Store
+
+# リサーチ出力（案件ごとに別管理）
+projects/
+research/
+*.local.*
