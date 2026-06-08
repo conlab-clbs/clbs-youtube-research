@@ -4,7 +4,10 @@ description: YouTube チャンネルの異常値（バズ動画）をリサー�
 ---
 
 # clbs-youtube-research — YouTube リサーチ＆異常値モデリング
-# v1.0 — 企画立案の前段（clbs-youtube-script-pro / clbs-sns へ引き渡し）
+# v2.0 — 「バズ解剖＆ナレッジ資産化」企画立案の前段（clbs-youtube-script-pro / clbs-sns へ引き渡し）
+#   v2.0 追加: ① 素材収集レイヤー（_tools/ingest.py で字幕/コメント/サムネを実取得）
+#             ② バズ解剖（動画の中身＝フック・リテンション設計・視聴者の痛みを分析）
+#             ③ ~/SecondBrain（claude-obsidian Vault）への複利ナレッジ蓄積
 
 ## 準拠規約
 
@@ -32,6 +35,80 @@ description: YouTube チャンネルの異常値（バズ動画）をリサー�
   - `04_research_summary.yaml` を読み込んでからフェーズ3「精鋭3案」を出す
 - `clbs-sns`（11_sns）の STEP2 フェーズ1：企画立案
   - `04_research_summary.yaml` を読み込んでから企画10案を出す
+
+---
+
+## 素材収集レイヤー（v2.0・_tools/ingest.py）
+
+タイトル・サムネ・数値だけでなく、**動画の中身（文字起こし）と視聴者の本音（コメント）**を実取得する。
+これが STEP2「異常値の特定」と STEP3「バズ解剖」の原料になる。
+
+### 前提ツール
+- `yt-dlp`（必須・APIキー不要で字幕/コメント/サムネを取得）
+- `ffmpeg` ＋ `faster_whisper`（字幕の無い動画だけ文字起こし補完）
+
+### 使い方
+```bash
+TOOLS=~/.claude/skills/clbs-youtube-research/_tools
+
+# STEP2で特定したTOP動画を明示指定（推奨）
+python3 $TOOLS/ingest.py --out projects/[案件名]/research/transcripts \
+  --videos "https://www.youtube.com/watch?v=XXXX" "https://www.youtube.com/watch?v=YYYY" \
+  --sub-langs ja,en --max-comments 100
+
+# チャンネルから再生数上位を自動抽出
+python3 $TOOLS/ingest.py --out projects/[案件名]/research/transcripts \
+  --channel "https://www.youtube.com/@handle" --top 10 --sub-langs ja,en
+```
+
+### 取得物（動画ごと `research/transcripts/<videoID>/`）
+- `transcript.txt`（タイムスタンプ付き）/ `transcript.plain.txt`（プレーン本文）
+- `comments.json` / `comments.md`（いいね数順）
+- `thumb.jpg`（サムネ実体・vision分析用）
+- `meta.json`（再生数・尺・字幕ソース 等）／全体 `index.json`
+
+### 方式（決定事項）
+- **字幕優先＋無い時だけWhisper**：手動字幕→自動字幕→（無ければ）Whisper補完。
+  `--no-whisper`（最軽量）／`--always-whisper`（最高精度）で切替。
+- 日本語チャンネルは手動字幕が無く自動字幕頼みになるため `--sub-langs ja,en` を基本とする。
+
+---
+
+## ナレッジ資産化（v2.0・~/SecondBrain 連携）
+
+リサーチを**一度きりのレポートで終わらせず**、`~/SecondBrain`（claude-obsidian Vault・
+Karpathyの「LLM Wiki」パターン）へ蓄積し、案件をまたいで**複利で積み上げる**。
+チャンネル＝entity、フック型・痛み・リテンション設計＝concept として相互リンクされ、
+使うほど「自ジャンルで何が刺さるか」のナレッジが密になる。
+
+### 取り込み手順（STEP3 完了後に実行）
+```bash
+VAULT=~/SecondBrain
+DEST=$VAULT/.raw/youtube-research/[案件名]
+mkdir -p "$DEST"
+
+# リサーチ成果と実素材を Vault の .raw/ へ投入
+cp projects/[案件名]/research/02_viral_modeling.md       "$DEST/"
+cp projects/[案件名]/research/03_competitor_benchmark.md  "$DEST/"
+cp -R projects/[案件名]/research/transcripts             "$DEST/"
+```
+そのうえで `~/SecondBrain` を開いた Claude セッション（プラグイン導入済みなら任意のディレクトリ可）で：
+```
+ingest all of these in .raw/youtube-research/[案件名]
+```
+を実行 → Claude が 8〜15枚の相互リンクされた Wiki ページを自動生成する。
+10〜15回の ingest ごとに `lint the wiki` で孤立ページ・知識ギャップを点検する。
+
+### 蓄積される複利資産（Vault内に自然形成）
+- **フックライブラリ**：感情カテゴリ別・反応スコア付きの冒頭フック（concept）
+- **痛み/欲求ライブラリ**：コメント由来の視聴者の本音（concept）
+- **リテンション設計パターン**：効いた構成の型（concept）
+- **チャンネル/クリエイター**：競合・参考先（entity）
+
+### 後続スキルからの参照
+`clbs-youtube-script-pro` / `clbs-sns` / `clbs-youtube-factory` は、企画立案前に
+`~/SecondBrain/wiki/hot.md` →（不足なら）`index.md` → 関連ページの順で蓄積知を参照できる。
+これにより「すでに反応の出た材料」から企画を起こせる。
 
 ---
 
